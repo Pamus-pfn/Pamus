@@ -33,9 +33,26 @@ menu_buttons.add(KeyboardButton("📊 Hisobim"))
 @dp.message_handler(commands=['start'])
 async def start_handler(message: types.Message):
     create_user(message.from_user)
+
     await message.answer(
-        f"Assalomu alaykum, {message.from_user.full_name}!\n"
-        "Psixologik yordamchi botga xush kelibsiz!",
+        "🧠 <b>PsixologTop - AiChat</b>\n\n"
+        "Sizning sun'iy intellekt yordamchingiz! 🌟\n\n"
+        "📌 <b>O'zbek tilida istalgan psixologik savollaringizni quyidagi formatlarda yuboring:</b>\n"
+        "✅ Matn – yozma ravishda savolingizni yuboring\n"
+        "🎙 Audio – ovozli xabar yuboring\n"
+        "📷 Rasm – yuz ifodalari orqali tahlil (tez orada!)\n\n"
+        "✨ <b>PsixologTop - AiChat</b> sizga tezkor va aniq javoblar beradi!\n\n"
+        "📌 <b>Qo'shimcha funksiyalar:</b>\n"
+        "🔹 Stress va depressiya testlari\n"
+        "🔹 Shaxsiy maslahatlar va tavsiyalar\n"
+        "🔹 Motivatsion xabarlar va mashqlar\n"
+        "🔹 Meditatsiya va ongni tinchlantirish texnikalari\n\n"
+        "💎 <b>Premium xizmatini faollashtiring!</b>\n"
+        "Botdan <b>1 marta BEPUL</b> foydalanishingiz mumkin! Shundan so‘ng, davom etish uchun Premium xizmatga o'tishingiz kerak\n\n"
+        "🚀 Premium xizmatlardan foydalanish uchun pastdagi <b>\"Premium\"</b> tugmasini bosing!\n\n"
+        "🆘 Savollaringiz bo'lsa yoki qo'shimcha yordam kerak bo'lsa, pastdagi <b>\"Bog‘lanish\"</b> tugmasini bosing!\n\n"
+        "💬 Savollaringizni yuboring… 👇",
+        parse_mode="HTML",
         reply_markup=menu_buttons
     )
 # --- END
@@ -64,7 +81,7 @@ async def answer_question(message: types.Message):
 
     await dp.current_state(user=message.from_user.id).finish()
 
-# --- Psixologik test (oddiy namuna)
+# --- Psixologik test (namuna)
 @dp.message_handler(Text(equals="2️⃣ Psixologik Test"))
 async def test_handler(message: types.Message):
     await message.answer("Testlar tayyorlanmoqda. Tez orada mavjud bo‘ladi.")
@@ -110,7 +127,8 @@ async def best_tarif_handler(call: types.CallbackQuery):
         "To‘lov uchun: @Psixolog_admin1"
     )
     await call.answer()
-    # --- Bog‘lanish
+
+# --- Bog‘lanish
 @dp.message_handler(Text(equals="📞 Bog‘lanish"))
 async def contact_handler(message: types.Message):
     markup = InlineKeyboardMarkup()
@@ -139,4 +157,4 @@ if name == 'main':
     print("Bot ishga tushdi...")
     from database import load_db
     load_db()
-    executor.start_polling(dp, skip_updates=True)
+    executor.start_polling(dp, skip_updates=True)   
